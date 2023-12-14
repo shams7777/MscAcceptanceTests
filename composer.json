@@ -1,0 +1,85 @@
+{
+    "project": "thpg-acceptance-tests",
+
+    "services": [
+        {
+            "id": "frontend",
+            "apps": [
+                {
+                    "id": "acc",
+                    "image": "httpd:latest",
+                    "instances": 1,
+                    "mem": 1024,
+                    "domain": {
+                        "uri": "thpgacceptancetests.sloppy.zone"
+                    },
+                    "ssl": true,
+                    "port_mappings": [
+                        {
+                            "container_port": 80
+                        }
+                    ],
+                    "volumes": [
+                    ],
+                    "health_checks": [
+                    ],
+                    "logging": null
+                },
+                {
+                    "id": "image",
+                    "image": "selenium/standalone-chrome:latest",
+                    "instances": 1,
+                    "mem": 1024,
+                    "ssl": false,
+                    "volumes": [
+                    ],
+                    "health_checks": [
+                    ],
+                    "dependencies": [
+                    ],
+                    "logging": null
+                }
+            ]
+        }
+    ],
+    "description": "Web Interface for running Codeception tests.",
+    "keywords": [
+        "codeception",
+        "webception",
+        "testing",
+        "php",
+        "web interface"
+    ],
+    "homepage": "https://github.com/jayhealey/Webception",
+    "authors": [
+        {
+            "name": "James Healey",
+            "email": "jayhealey@gmail.com",
+            "homepage": "http://twitter.com/jayhealey",
+            "role": "Developer"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1",
+        "slim/slim": "2.*",
+        "slim/views": "0.1.*",
+        "twig/twig": "~1.13",
+        "codeception/codeception": "^4.1",
+        "codeception/module-asserts": "^1.0.0",
+        "codeception/module-webdriver": "^1.1",
+        "codeception/module-filesystem": "^1.0.0",
+        "namshi/notificator": "1.0.*",
+        "phpmailer/phpmailer": "^6.5",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "App": ""
+        }
+    },
+    "require-dev": {
+        "codeception/module-phpbrowser": "^1.0",
+        "codeception/notifier": "^0.1.0"
+    }
+}

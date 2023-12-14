@@ -1,0 +1,37 @@
+# Codeception Test Suite Configuration
+
+# suite for acceptance tests.
+# perform tests in browser using the Selenium-like tools.
+# powered by Mink (http://mink.behat.org).
+# (tip: that's what your customer will see).
+# (tip: test your ajax and javascript by one of Mink drivers).
+
+# RUN `build` COMMAND AFTER ADDING/REMOVING MODULES
+#please copy this file to same name without _template
+
+class_name: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver
+        - \Helper\Acceptance
+    config:
+        WebDriver:
+            url: https://onroadservicestest.trafineo.com/eets/registration
+            # wenn mann Docker-PC mit chrome starten möchte sollte man einfach browser: chrome und port: 4445 setzen; fertig
+            #            browser: chrome
+            #            capabilities:
+            #                chromeOptions:
+            #                    args: ["--disable-gpu", "--disable-extensions"]
+            ##                    args: ["--headless", "--disable-gpu", "--disable-extensions"]
+            #            port: 4445
+            browser: chrome
+            port: 4444
+            capabilities:
+                acceptSslCerts: false
+                acceptInsecureCerts: true
+                w3c: false
+                unexpectedAlertBehaviour: 'accept'
+            host: eetsacceptance.ddev.site
+            clear_cookies: false
+            window_size: maximize
+            pageload_timeout: 50

@@ -1,0 +1,102 @@
+#ddev-generated
+
+http:
+  routers:
+    
+    
+    mscacceptancetests-selenium-4444-http:
+      
+      rule: HostRegexp(`mscacceptancetests.ddev.site`)
+      
+      service: "mscacceptancetests-selenium-4444-http"
+      tls: false
+      entrypoints:
+        - http-4444
+    
+    
+    mscacceptancetests-web-80-http:
+      
+      rule: HostRegexp(`mscacceptancetests.ddev.site`)
+      
+      service: "mscacceptancetests-web-80-http"
+      tls: false
+      entrypoints:
+        - http-80
+    
+    
+    mscacceptancetests-web-8025-http:
+      
+      rule: HostRegexp(`mscacceptancetests.ddev.site`)
+      
+      service: "mscacceptancetests-web-8025-http"
+      tls: false
+      entrypoints:
+        - http-8025
+    
+    
+    
+    
+    
+    
+    
+    mscacceptancetests-web-80-https:
+      
+      rule: HostRegexp(`mscacceptancetests.ddev.site`)
+      
+      service: "mscacceptancetests-web-80-https"
+      
+      tls: true
+      
+      entrypoints:
+        - http-443
+    
+    
+    mscacceptancetests-web-8025-https:
+      
+      rule: HostRegexp(`mscacceptancetests.ddev.site`)
+      
+      service: "mscacceptancetests-web-8025-https"
+      
+      tls: true
+      
+      entrypoints:
+        - http-8026
+    
+    
+
+  services:
+    
+    mscacceptancetests-selenium-4444-http:
+      loadbalancer:
+        servers:
+          - url: http://ddev-mscacceptancetests-selenium:4444
+    
+    mscacceptancetests-web-80-http:
+      loadbalancer:
+        servers:
+          - url: http://ddev-mscacceptancetests-web:80
+    
+    mscacceptancetests-web-8025-http:
+      loadbalancer:
+        servers:
+          - url: http://ddev-mscacceptancetests-web:8025
+    
+    mscacceptancetests-web-80-https:
+    
+      loadbalancer:
+        servers:
+          - url: http://ddev-mscacceptancetests-web:80
+    
+    mscacceptancetests-web-8025-https:
+    
+      loadbalancer:
+        servers:
+          - url: http://ddev-mscacceptancetests-web:8025
+    
+
+
+tls:
+  certificates:
+    - certFile: /mnt/ddev-global-cache/traefik/certs/mscacceptancetests.crt
+      keyFile: /mnt/ddev-global-cache/traefik/certs/mscacceptancetests.key
+

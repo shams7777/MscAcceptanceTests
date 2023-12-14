@@ -1,0 +1,21 @@
+version: '3.6'
+
+services:
+  selenium:
+    container_name: ddev-${DDEV_SITENAME}-selenium
+    image: selenium/standalone-chrome:4.16.1-20231212
+    command: ["/opt/bin/entry_point.sh"]
+    entrypoint:
+      - "/opt/bin/entry_point.sh"
+    ports:
+      - 4444
+      - 7900:7900
+    shm_size: "2g"
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      - HTTP_EXPOSE=4444
+    external_links:
+      - ddev-router:$DDEV_HOSTNAME

@@ -1,0 +1,11 @@
+# Ignore vendor directory
+/vendor/
+
+# Ignore log files and directories
+/log/
+*.log
+
+# Ignore other temporary files and directories
+/tmp/
+*.swp
+
